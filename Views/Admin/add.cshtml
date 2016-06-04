@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    @Html.Partial("PartialPage")
+
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+</head>
+<body style="font-family: Verdana; color: white; overflow-x: hidden; background-image: url('/Content/images/nbg16.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+    @Html.Partial("AdminPartialHeader")
+
+    @{
+
+        if (IsPost)
+        {
+            var name = Request["name"];
+            var price = Request["price"];
+            var quantity = Request["quantity"];
+            var cname = Request["cname"];
+
+            var stock = Request["stock"];
+
+            Response.Redirect("~/Admin/SaveProductAdmin");
+
+        }
+
+
+    }
+
+
+    <!---->
+    <div class="container">
+
+    </div>
+    <div class="back">
+
+    </div>
+    <!---->
+    <div class="container">
+        <div class="account_grid">
+            <div class=" login-right">
+                <h3>Add An Item</h3>
+                <br /><br />
+
+                
+                @using (Html.BeginForm("SaveProductAdmin", "Admin", FormMethod.Post, new{ enctype = "multipart/form-data"}))
+                {
+
+                    <strong>Product Name</strong><br>
+                    <input type="Text" id="name" name="name" class="form-control" placeholder="Enter Product Name" required />
+                    <span id="name1"></span><br><br>
+
+                    <strong>Price</strong><br>
+                    <input type="Text" id="price" name="price" class="form-control" placeholder="Enter Price" required />
+                    <span id="name1"></span><br><br>
+
+                    <strong>Quantity</strong><br>
+                    <input type="Text" name="quantity" class="form-control" placeholder="Enter Quantity" required />
+                    <br><br>
+
+                    <strong>Category</strong><br>
+                    <input type="Text" name="cname" class="form-control" placeholder="Enter Category" required />
+                    <br><br>
+
+                    <strong> Stock </strong><br>
+                    <input type="Text" name="stock" class="form-control" placeholder="Enter Stock " required />
+                    <br><br>
+
+
+                    <input type="file" name="file" /> <br /> <br>  <br />
+
+                     <button type="submit"  value="submit" > Submit </button> <br />
+
+                }
+
+            </div>
+
+            <script src="~/js/bootstrap.js" type="text/javascript"></script>
+</body>
+</html>

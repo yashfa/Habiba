@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "signup";
+}
+
+
+@{
+    var error = "";
+    if (IsPost)
+    {
+        var pass1 = Request["password"];
+        var pass2 = Request["password1"];
+        var name = Request["name"];
+        var password = Request["password"];
+        var address = Request["address"];
+        var cnic = Request["cnic"];
+        var username = Request["username"];
+        var type = "customer";
+        
+        <p> @password " " @name " " + " " @cnic " " + " " +  @address + " " @username + " " + @type </p>
+        if (pass1 != pass2)
+        {
+            error = "Passwords donot Match ! ";
+        }
+
+        else
+        {
+            Response.Redirect("~/Home/SaveData");
+        }
+    }
+
+
+}
+
+
+<!-- grow -->
+<div class="grow">
+    <div class="container">
+        <h2>Sign up</h2>
+    </div>
+</div>
+<!-- grow -->
+<!--content-->
+<div class="container">
+    <div class="account">
+        <div class="account-pass">
+            <div class="col-md-8 account-top">
+                <form action="/Home/SaveData" method="POST">
+
+                    <strong>Name</strong><br>
+                    <input type="Text" id="name" name="name" class="form-control" placeholder="Enter your name" required />
+                    <span id="name1"></span><br>
+
+
+                    <strong>Username</strong><br>
+                    <input type="text" id="username" name="username" class="form-control" placeholder=" username" required />
+                    <span id="username"></span><br>
+
+                    <strong>Password</strong><br>
+                    <input type="Password" id="password" name="password" class="form-control" placeholder="Enter your Password" value="" required />
+                    <span id="password1"></span><br>
+
+                    <strong>Retype Password</strong><br>
+                    <input type="Password" id="re_password" name="password1" class="form-control" placeholder="ReEnter your Password" value="" required />
+                    <span id="password2" style="color:red"> @error </span><br>
+
+
+                    <strong>Address</strong><br>
+                    <input type="text" id="address" name="address" class="form-control" placeholder="Address" required /><br>
+
+                    <strong>CNIC</strong><br>
+                    <input type="text" id="cnic" name="cnic" class="form-control" placeholder="CNIC" required /><br>
+
+
+
+                    <button type="submit" class="btn btn-primary btn-block" value="submit" onclick="validate()"> Done </button> <br />
+                </form>
+                <div class="clearfix"> </div>
+                <div class="clearfix"> </div>
+                <div class="clearfix"> </div>
+
+                <div class="clearfix"> </div>
+                <div class="clearfix"> </div>
+                <div class="clearfix"> </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!--//content-->
+
